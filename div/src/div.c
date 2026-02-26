@@ -1,14 +1,32 @@
 #include <stdio.h>
+#include <errno.h>
+#include "div.h"
 
 int div(int a,  int b){
+    
+    #ifdef DEBUG_ON
 
-int x = a / b; 
+    printf("[DEBUG] Chamando div(%d, %d)\n", a, b);
 
-#ifdef DEBUG_ON
+    #endif
+    
+    if(b == 0){
+        
+        errno = EDOM;
+        
+        #ifdef DEBUG_ON
+        
+           
+        printf("[DEBUG] Erro: Divisão por zero!\n");
+        
+        #endif
 
-printf("[DEBUG] Chamando div(%d, %d)\n",a ,b);
+        return 0;  
+    }
 
-#endif
+    int x = a / b; 
 
-return x;
+    
+
+    return x;
 }
