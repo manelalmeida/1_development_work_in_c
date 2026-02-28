@@ -3,7 +3,7 @@
 #include<stddef.h>
 #include<stdbool.h>
 
-//? dynvec: declarado aqui, definido no .c
+//todo dynvec: declarado aqui, definido no .c
 typedef struct Dynvec dynvec;
 
 dynvec  *dynvec_create(void);
@@ -22,11 +22,11 @@ size_t  dynvec_index(dynvec *, int);
 void    dynvec_print(dynvec *);
 void    dynvec_free(dynvec *);
 
-//? o serviço seguinte é privado, colocado no
-//? ficheiro dynvec.c.
-//? É uma função auxiliar central à biblioteca que
-//? deverá ser implementado.
-//? É aqui referenciado para o efeito da Ficha Prática
-//? static void dynvec_resize (dynvec *, int);
+//todo o serviço seguinte é privado, colocado no
+//todo ficheiro dynvec.c.
+//todo É uma função auxiliar central à biblioteca que
+//todo deverá ser implementado.
+//todo É aqui referenciado para o efeito da Ficha Prática
+//todo static void dynvec_resize (dynvec *, int);
 
 #endif
