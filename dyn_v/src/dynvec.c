@@ -85,3 +85,14 @@ size_t dynvec_capacity(dynvec *v){
 
     return v->capacity;
 }
+
+size_t dynvec_length(dynvec *v){
+
+    if(v == NULL)return 0;
+
+    return v->length;
+} 
+
+static void dynvec_resize(dynvec *v, int size){
+    
+}
