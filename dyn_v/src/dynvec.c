@@ -22,7 +22,7 @@ typedef struct Dynvec {
 } dynvec;
 
 // criar um dynvec com a sua configuração inicial mínima
-
+		
 dynvec *dynvec_create(void){
 
 // v é ponteiro para uma estrutura dynvec
@@ -81,4 +81,7 @@ void dynvec_empty(dynvec *v){
 
 size_t dynvec_capacity(dynvec *v){
     
+    if(!v)return 0;
+
+    return v->capacity;
 }
