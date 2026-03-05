@@ -1,10 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -Iinclude
 LDFLAGS =
-SRC = src/dynvec.c 
+SRC = src/intdynvec.c 
 #tests/main.c
 OBJ = $(SRC:.c=.o)
-OUT = dynvec
+OUT = intdynvec
 all: build
 build: $(OUT)
 $(OUT): $(OBJ)
