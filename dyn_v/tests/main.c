@@ -6,7 +6,18 @@
 #include "intdynvec.h"
 #define MAX_LINE 100
 int main(int argc, char *argv[]) {
-if (argc < 2) {
+
+dynvec *v = dynvec_create();
+
+
+
+free(v->data);
+    free(v);
+
+
+
+    /*
+    if (argc < 2) {
 fprintf(stderr, "Uso: %s <arquivo_de_teste>\n",
 argv[0]);
 return 1;
@@ -62,5 +73,7 @@ else if (strcmp(line, ""))
 printf("Comando desconhecido: %s\n", line);
 }
 fclose(file);
+
+*/
 return 0;
 }

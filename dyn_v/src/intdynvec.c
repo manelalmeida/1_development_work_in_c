@@ -38,7 +38,7 @@ dynvec *dynvec_create(void){
     
     v->capacity = DYNVEC_INIT_CAPACITY;
     v->length = 0;
-    v->data = malloc(v->capacity * sizeof *v->data);
+    v->data = malloc(v->capacity * sizeof(int));
 
     if (!(v->data)) {
         errno = ENOMEM;
@@ -58,7 +58,7 @@ void dynvec_empty(dynvec *v){
     
 
 // alocar em uma variavel temporaria     
-    int *t = malloc(DYNVEC_INIT_CAPACITY * sizeof *v->data);
+    int *t = malloc(DYNVEC_INIT_CAPACITY * sizeof(int));
 
 //
     if(!t){
@@ -99,7 +99,7 @@ static void dynvec_resize(dynvec *v, int size){
         return;
     }  
 
-    int *t = realloc(v->data, size * sizeof *v->data);
+    int *t = realloc(v->data, size * sizeof(int));
     
     if(!t){
         
@@ -116,5 +116,26 @@ static void dynvec_resize(dynvec *v, int size){
 //!5
 void dynvec_push(dynvec *v, int item){
 
-    
+/*
+1 verificar v == NULL
+2 verificar se vetor está cheio
+3 se estiver → dynvec_resize
+4 inserir item no fim
+5 aumentar length
+*/
+
+if(v == NULL)return;
+
+if(v->length == v->capacity){
+
+    dynvec_resize(v, v->capacity * 2);
 }
+
+    v->data[v->length] = item;
+
+v->length++;
+}
+void dynvec_free(dynvec *v){
+    free(*v);
+    }
+
