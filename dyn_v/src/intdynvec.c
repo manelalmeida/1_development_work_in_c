@@ -179,6 +179,14 @@ int dynvec_get(dynvec *v, size_t index){
 }
 
 void dynvec_free(dynvec *v){
-    free(*v);
+    
+    if(v == NULL) return;
+ 
+    free(v->data);
+    //!v->data = NULL;
+    //!v->length = 0;
+    //!v->capacity = 0;
+    free(v);
+
     }
 
