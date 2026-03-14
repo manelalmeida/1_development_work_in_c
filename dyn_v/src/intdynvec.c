@@ -116,25 +116,36 @@ static void dynvec_resize(dynvec *v, int size){
 //!5
 void dynvec_push(dynvec *v, int item){
 
-/*
-1 verificar v == NULL
-2 verificar se vetor está cheio
-3 se estiver → dynvec_resize
-4 inserir item no fim
-5 aumentar length
-*/
+    if(v == NULL)return;
 
-if(v == NULL)return;
+    if(v->length == v->capacity){
 
-if(v->length == v->capacity){
-
-    dynvec_resize(v, v->capacity * 2);
+        dynvec_resize(v, v->capacity * 2);
 }
 
-    v->data[v->length] = item;
+v->data[v->length] = item;
 
 v->length++;
 }
+
+int dynvec_pop(dynvec *v){
+
+    if(v == NULL || v->length == 0)return -1;
+
+    int item = v->data[v->length -1];
+
+    v->length--;
+    
+    if(v->length <= v->capacity / 4){
+
+        dynvec_resize(v, v->capacity / 2);
+    }
+    
+    return item;
+}
+
+
+
 void dynvec_free(dynvec *v){
     free(*v);
     }
