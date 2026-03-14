@@ -31,7 +31,7 @@ dynvec *dynvec_create(void){
     if (!v){
         errno = ENOMEM;
         #ifdef DEBUG_ON
-        perror("Create. Erro ao almalloc(v->capacity * sizeof *v->data);ocar memória");
+        perror("Create. Erro ao almalloc(v->capacity * sizeof *v->data);alocar memória");
         #endif
     return NULL;
     }
@@ -127,7 +127,7 @@ v->data[v->length] = item;
 
 v->length++;
 }
-
+//!6
 int dynvec_pop(dynvec *v){
 
     if(v == NULL || v->length == 0)return -1;
@@ -143,8 +143,28 @@ int dynvec_pop(dynvec *v){
     
     return item;
 }
+//!7
+void dynvec_set(dynvec *v, size_t index, int item){
+
+    if(v == NULL)return;
+
+    if(index >= v->length){
+        
+        errno = ERANGE;
+        #ifdef DEBUG_ON
+        perror("Create. Erro ao almalloc(v->capacity * sizeof *v->data);alocar memória");
+        #endif
+        
+        return;
+    }
+
+    v->data[index] = item;
+}
+//!8
+void dynvec_get(dynvec *v, size_t index){
 
 
+}
 
 void dynvec_free(dynvec *v){
     free(*v);
