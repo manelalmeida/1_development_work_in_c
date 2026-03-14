@@ -161,9 +161,21 @@ void dynvec_set(dynvec *v, size_t index, int item){
     v->data[index] = item;
 }
 //!8
-void dynvec_get(dynvec *v, size_t index){
+int dynvec_get(dynvec *v, size_t index){
 
+    if(v == NULL)return -1;
 
+    if(index >= v->length){
+        
+        errno = ERANGE;
+        #ifdef DEBUG_ON
+        perror("dynvec_get: índice fora do intervalo");
+        #endif
+        
+        return -1;
+    }
+
+    return v->data[index];
 }
 
 void dynvec_free(dynvec *v){
